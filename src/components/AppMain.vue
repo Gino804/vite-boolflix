@@ -1,12 +1,14 @@
 <script>
-import MoviesList from './MoviesList.vue';
+import FictionList from './FictionList.vue';
 
 export default {
-    components: { MoviesList }
+    components: { FictionList }
 }
 </script>
 
 <template>
     <h2>Film:</h2>
-    <MoviesList />
+    <FictionList :content="'movies'" />
+    <h2>Serie TV:</h2>
+    <FictionList :content="'series'" />
 </template>

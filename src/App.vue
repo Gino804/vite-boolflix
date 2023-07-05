@@ -9,9 +9,12 @@ const apiKey = 'bad7ca77233bc46b9ff0f547289a5f01';
 export default {
   components: { AppHeader, AppMain },
   methods: {
-    searchMovie(searchedTerm) {
+    searchTerm(searchedTerm) {
       axios.get(`${baseUri}/search/movie?api_key=${apiKey}&query=${searchedTerm}&language=it`).then(res => {
         store.movies = res.data.results;
+      })
+      axios.get(`${baseUri}/search/tv?api_key=${apiKey}&query=${searchedTerm}&language=it`).then(res => {
+        store.series = res.data.results;
       })
     }
   }
@@ -19,6 +22,6 @@ export default {
 </script>
 
 <template>
-  <AppHeader @searched-term="searchMovie" />
+  <AppHeader @searched-term="searchTerm" />
   <AppMain />
 </template>
