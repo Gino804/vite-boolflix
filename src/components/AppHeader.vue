@@ -13,5 +13,7 @@ export default {
 </script>
 
 <template>
-    <BaseSearchbar @button-clicked="searchTerm" />
+    <header>
+        <BaseSearchbar @button-clicked="searchTerm" />
+    </header>
 </template>

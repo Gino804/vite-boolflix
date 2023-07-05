@@ -7,8 +7,10 @@ export default {
 </script>
 
 <template>
-    <h2>Film:</h2>
-    <FictionList :content="'movies'" />
-    <h2>Serie TV:</h2>
-    <FictionList :content="'series'" />
+    <main>
+        <h2>Film:</h2>
+        <FictionList :content="'movies'" />
+        <h2>Serie TV:</h2>
+        <FictionList :content="'series'" />
+    </main>
 </template>
