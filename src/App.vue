@@ -25,3 +25,7 @@ export default {
   <AppHeader @searched-term="searchTerm" />
   <AppMain />
 </template>
+
+<style lang="scss">
+@use './assets/scss/style.scss';
+</style>
