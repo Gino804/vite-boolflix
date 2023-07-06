@@ -12,17 +12,24 @@ export default {
         return {
             roundedRating: Math.ceil(this.rating / 2)
         }
+    },
+    computed: {
+        shortOverview() {
+            if (this.overview.length > 200) return `${this.overview.substring(0, 200).trim()}...`;
+            else return this.overview;
+        }
     }
 }
 </script>
 
 <template>
     <div class="card">
-        <img :src="`https://image.tmdb.org/t/p/w342${poster}`" :alt="title">
+        <img :src="poster ? `https://image.tmdb.org/t/p/w342${poster}` : '../src/assets/img/no-poster.png'" :alt="title">
         <div>
             <h4>{{ title }}</h4>
             <p><b>Titolo originale: </b>{{ originalTitle }}</p>
-            <p><b>Lingua: </b><img :src="`../src/assets/img/${language}.png`" :alt="language"></p>
+            <p><b>Lingua: </b><img v-if="language === 'en' || language === 'it'" :src="`../src/assets/img/${language}.png`"
+                    :alt="language"><span v-else>{{ language.toUpperCase() }}</span></p>
             <p><b>Valutazione:</b>
                 <i :class="roundedRating ? 'fa-solid' : 'fa-regular'" class="fa-star"></i>
                 <i :class="roundedRating >= 2 ? 'fa-solid' : 'fa-regular'" class="fa-star"></i>
@@ -30,7 +37,7 @@ export default {
                 <i :class="roundedRating >= 4 ? 'fa-solid' : 'fa-regular'" class="fa-star"></i>
                 <i :class="roundedRating === 5 ? 'fa-solid' : 'fa-regular'" class="fa-star"></i>
             </p>
-            <p><b>Trama:</b> {{ overview }}</p>
+            <p><b>Trama:</b> {{ shortOverview }}</p>
         </div>
     </div>
 </template>
