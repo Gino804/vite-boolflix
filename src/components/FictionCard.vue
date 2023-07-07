@@ -18,6 +18,13 @@ export default {
             if (this.overview.length > 200) return `${this.overview.substring(0, 200).trim()}...`;
             else return this.overview;
         }
+    },
+    methods: {
+        getIcon(n) {
+            console.log(this.roundedRating);
+            if (this.roundedRating < n) return 'far';
+            else return 'fas';
+        }
     }
 }
 </script>
@@ -31,7 +38,7 @@ export default {
             <p><b>Lingua: </b><img v-if="language === 'en' || language === 'it'" :src="`../src/assets/img/${language}.png`"
                     :alt="language"><span v-else>{{ language.toUpperCase() }}</span></p>
             <p><b>Valutazione:</b>
-                <i v-for="n in 5" :class="roundedRating <= n ? 'fa-regular' : 'fa-solid'" class="fa-star"></i>
+                <FontAwesomeIcon v-for="n in 5" :icon="[getIcon(n), 'star']" />
             </p>
             <p><b>Trama:</b> {{ shortOverview }}</p>
         </div>
