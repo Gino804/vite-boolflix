@@ -31,11 +31,7 @@ export default {
             <p><b>Lingua: </b><img v-if="language === 'en' || language === 'it'" :src="`../src/assets/img/${language}.png`"
                     :alt="language"><span v-else>{{ language.toUpperCase() }}</span></p>
             <p><b>Valutazione:</b>
-                <i :class="roundedRating ? 'fa-solid' : 'fa-regular'" class="fa-star"></i>
-                <i :class="roundedRating >= 2 ? 'fa-solid' : 'fa-regular'" class="fa-star"></i>
-                <i :class="roundedRating >= 3 ? 'fa-solid' : 'fa-regular'" class="fa-star"></i>
-                <i :class="roundedRating >= 4 ? 'fa-solid' : 'fa-regular'" class="fa-star"></i>
-                <i :class="roundedRating === 5 ? 'fa-solid' : 'fa-regular'" class="fa-star"></i>
+                <i v-for="n in 5" :class="roundedRating <= n ? 'fa-regular' : 'fa-solid'" class="fa-star"></i>
             </p>
             <p><b>Trama:</b> {{ shortOverview }}</p>
         </div>
